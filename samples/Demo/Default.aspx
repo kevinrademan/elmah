@@ -25,6 +25,11 @@
 
     protected void ErrorButton_Click(object sender, EventArgs e)
     {
+        for (var i = 0; i < 1500; i++)
+        {
+            var ex = new System.ApplicationException();
+            ErrorSignal.FromContext(Context).Raise(ex);
+        }
         ThrowSampleException();
     }
 
@@ -46,6 +51,7 @@
 
     private static void ThrowSampleException()
     {
+        
         throw new System.ApplicationException();
     }
 

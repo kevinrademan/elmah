@@ -91,7 +91,7 @@ WriteLiteral("\r\n");
             #line 8 "..\..\ErrorLogPage.cshtml"
   
     const int defaultPageSize = 15;
-    const int maximumPageSize = 100;
+    const int maximumPageSize = 1000;
 
     var basePageName = Request.ServerVariables["URL"];
     
@@ -217,7 +217,7 @@ WriteLiteral("</span>\r\n        </h1>\r\n        \r\n");
             var stockSizes =
                 from sizes in new[]
                 {
-                    new[] { 10, 15, 20, 25, 30, 50, 100, },
+                    new[] { 10, 15, 20, 25, 30, 50, 100, 1000, },
                 }
                 from size in sizes.Index()
                 let separator = 

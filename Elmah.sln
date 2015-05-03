@@ -46,6 +46,10 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Demo", "http://localhost:51
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9DDA8D29-1462-465C-AA30-710B5E5C746B}"
 	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		.hgignore = .hgignore
+		.hgsub = .hgsub
+		.hgsubstate = .hgsubstate
 		build.cmd = build.cmd
 		buildw.cmd = buildw.cmd
 		COPYING.txt = COPYING.txt

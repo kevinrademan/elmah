@@ -179,6 +179,11 @@ namespace Elmah
             return newId.ToString();
         }
 
+        public override void Delete(string id)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Returns the specified error from application memory, or null 
         /// if it does not exist.

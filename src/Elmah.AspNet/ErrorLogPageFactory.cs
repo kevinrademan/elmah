@@ -128,6 +128,10 @@ namespace Elmah
                     #endif
                 case "stylesheet":
                     return new DelegatingHttpHandler(ManifestResourceHandler.Create(StyleSheetHelper.StyleSheetResourceNames, "text/css", Encoding.GetEncoding("Windows-1252"), true));
+                case "javascript":
+                    return new DelegatingHttpHandler(ManifestResourceHandler.Create(JavascriptHelper.JavascriptResourceNames, "text/javascript", Encoding.GetEncoding("Windows-1252"), true));
+                case "ajax":
+                    return new DelegatingHttpHandler(AjaxHandler.ProcessRequest);
                 case "test":
                     throw new TestException();
                 case "about":

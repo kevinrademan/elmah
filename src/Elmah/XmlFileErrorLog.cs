@@ -161,6 +161,17 @@ namespace Elmah
             return errorId;
         }
 
+        public override void Delete(string id)
+        {
+            var file = this.GetErrorLogFile(id);
+            if (file != null)
+            {
+                file.Delete();
+                return;
+            }
+            throw new Exception("Unable to delete error");
+        }
+
         /// <summary>
         /// Returns a page of errors from the folder in descending order 
         /// of logged time as defined by the sortable filenames.
@@ -215,7 +226,6 @@ namespace Elmah
         /// <summary>
         /// Returns the specified error from the filesystem, or throws an exception if it does not exist.
         /// </summary>
-        
         public override ErrorLogEntry GetError(string id)
         {
             try
@@ -227,8 +237,7 @@ namespace Elmah
                 throw new ArgumentException(e.Message, id, e);
             }
 
-            var file = new DirectoryInfo(LogPath).GetFiles(string.Format("error-*-{0}.xml", id))
-                                                 .FirstOrDefault();
+            var file = this.GetErrorLogFile(id);
             
             if (file == null)
                 return null;
@@ -238,6 +247,15 @@ namespace Elmah
 
             using (var reader = XmlReader.Create(file.FullName))
                 return new ErrorLogEntry(this, id, ErrorXml.Decode(reader));
+        }
+
+        private FileInfo GetErrorLogFile(string id)
+        {
+            var file = new DirectoryInfo(LogPath).GetFiles(string.Format("error-*-{0}.xml", id))
+                                                 .FirstOrDefault();
+
+            return file;
+
         }
 
         private static bool IsUserFile(FileAttributes attributes)

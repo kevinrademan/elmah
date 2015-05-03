@@ -60,6 +60,16 @@ namespace Elmah
         
         public abstract string Log(Error error);
 
+
+        /// <summary>
+        /// Delets an error log from the application
+        /// </summary>
+        /// <param name="id"></param>
+        public virtual void Delete(string id)
+        {
+            throw new NotImplementedException("The delete method has not been implemented for this provider");
+        }
+
         #if ASYNC
 
         /// <summary>

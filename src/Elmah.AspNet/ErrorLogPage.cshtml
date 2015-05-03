@@ -124,6 +124,7 @@
                     <th class="error-col" style="white-space:nowrap;">Error</th>
                     <th class="user-col" style="white-space:nowrap;">User</th>
                     <th class="time-col" style="white-space:nowrap;">When</th>
+                    <th class="delete-col" style="white-space:nowrap;"><button id="removeErrors" type="submit">Remove</button></th>
                 </tr>
 
             @foreach (var error in from item in errorEntryList.Index()
@@ -166,6 +167,7 @@
                     
                     <td class="user-col" style="white-space:nowrap;">@error.User</td>
                     <td class="time-col" style="white-space:nowrap;"><abbr title="@error.Iso8601Time">@error.When</abbr></td>
+                    <td class="delete-col" style="white-space:nowrap;"><input value="@error.Id" name="delete-errors" type="checkbox" /></td>
                 </tr>
             }
             </table>
